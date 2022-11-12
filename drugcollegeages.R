@@ -7,6 +7,7 @@ library(plotly)
 library(dplyr)
 
 # Data source: https://www.kaggle.com/datasets/tunguz/drug-use-by-age
+drug_use_by_age <- read.csv(file = 'drug_use_by_age.csv')
 
 # Cleaning dataset
 college_age_drugs <- drug_use_by_age[-c(1:5, 12:17), ]  # only college age rows
