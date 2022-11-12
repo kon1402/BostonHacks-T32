@@ -5,9 +5,10 @@ install.packages("dplyr")
 library(ggplot2)
 library(plotly)
 library(dplyr)
+library(curl)
 
 # Data source: https://www.kaggle.com/datasets/tunguz/drug-use-by-age
-drug_use_by_age <- read.csv(file = 'drug_use_by_age.csv')
+drug_use_by_age <- read.csv(curl("https://raw.githubusercontent.com/kon1402/BostonHacks-T32/main/drug-use-by-age.csv"))
 
 # Cleaning dataset
 college_age_drugs <- drug_use_by_age[-c(1:5, 12:17), ]  # only college age rows
@@ -17,11 +18,11 @@ college_age_drugs <- college_age_drugs %>% select(1, 3, 4, 5, 10, 12)
 
 college_age_drugs <- college_age_drugs %>% 
   rename(`Age`=`age`) %>%
-  rename(`Percent using alcohol` = `alcohol-use`) %>%
-  rename(`Percent using marijuana` = `marijuana-use`) %>%
-  rename(`Percent using cocaine` = `cocaine-use`) %>%
-  rename(`Percent using pain relievers` = `pain-releiver-use`) %>%
-  rename(`Percent using tranquilizers` = `tranquilizer-use`)
+  rename(`Percent using alcohol` = `alcohol.use`) %>%
+  rename(`Percent using marijuana` = `marijuana.use`) %>%
+  rename(`Percent using cocaine` = `cocaine.use`) %>%
+  rename(`Percent using pain relievers` = `pain.releiver.use`) %>%
+  rename(`Percent using tranquilizers` = `tranquilizer.use`)
 
 # Creating legend reference
 colors <- c("Alcohol" = "darkred", "Marijuana" = "steelblue", "Cocaine" = "darkgreen",
